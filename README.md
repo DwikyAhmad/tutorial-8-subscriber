@@ -10,3 +10,11 @@ guest pertama menandakan username, sedangkan guest kedua menandakan password yan
 ![QueueRabbitMQ](img/Screenshot%202024-04-22%20142515.png)
 
 Grafik queue messages menjukkan angka 20 pada grafik, hal ini disebabkan oleh subscribers membutuhkan waktu yang lama untuk memperoses message yang dikirim oleh publisher, menjadikan adanya antrean berupa messages queue menunggu untuk diproses oleh subscribers
+
+![console](img/Screenshot%202024-04-22%20143718.png)
+
+![graph](img/Screenshot%202024-04-22%20143543.png)
+
+Gambar menunjukkan adanya perbedaan data yang diterima oleh tiap console, hal ini dikarenakan data yang sudah diterima oleh suatu subscriber akan hilang dari queue dan tidak bisa diterima oleh subscriber lainnya, menggunakan subscriber yang banyak juga mempercepat penerimaan data pada grafik dan mengurangi queue message pada message broker karena setiap subscriber menerima data secara bersamaan dari queue message.
+
+Hal yang dapat diimprove dalam kode adalah menggunakan expect() dibanding unwrap() untuk melakukan handle error, menggunakan env dibanding melakukan hardcode URL untuk memudahkan modifikasi, message handling dapat diimprove untuk melakukan suatu fungsionalitas dibanding dengan melakukan print pada console saja.
